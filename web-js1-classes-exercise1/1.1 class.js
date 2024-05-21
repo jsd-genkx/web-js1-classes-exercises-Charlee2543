@@ -39,19 +39,27 @@ class Product {
     console.log(`Price: ฿${this.price.toFixed(2)}`);
   }
 
-  calculateTotal(salesTax) {
-    return this.price + this.price * salesTax;
+  calculateTotal(salesTax,promotion) {
+    return (this.price + this.price * salesTax) *promotion;
   }
 }
 
+const promotion = 0.98;
 const salesTax = 0.07;
 
-const product1 = new Product("Shirt", 249.99);
-const product2 = new Product("Pants", 339.99);
-const product3 = new Product("Underwear", 149.99);
+const product1 = new Product("watch", 3500);
+const product2 = new Product("iPhone",35000);
+const product3 = new Product("iPad", 15000);
 
 product1.displayProduct();
+product2.displayProduct();
+product3.displayProduct();
 
-const totalPrice = product1.calculateTotal(salesTax);
+const totalPrice1 = product1.calculateTotal(salesTax,promotion);
+const totalPrice2 = product2.calculateTotal(salesTax,promotion);
+const totalPrice3 = product3.calculateTotal(salesTax,promotion);
 
-console.log(`Total Price (with tax): ฿${totalPrice.toFixed(2)}`);
+console.log(`Total Price (with tax): ฿${totalPrice1.toFixed(2)}`);
+console.log(`Total Price (with tax): ฿${totalPrice2.toFixed(2)}`);
+console.log(`Total Price (with tax): ฿${totalPrice3.toFixed(2)}`);
+console.log(`Total Price All Product (with tax): ฿${(totalPrice1+totalPrice2+totalPrice3).toFixed(2)}`)
